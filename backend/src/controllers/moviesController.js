@@ -5,13 +5,13 @@ import moviesModel from "../models/Movies.js";
 // Importo la libreria de `Cloudinary` para guardar las imagenes
 import { v2 as cloudinary } from 'cloudinary';
 // Configuro Cloudinary con las credenciales en el .env
-Cloudinary.config({
+cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET
 })
 // CREATE (POST)
-moviesController.postEmployees = async (req, res) => {
+moviesController.postMovies = async (req, res) => {
     const {title, description, filmDirector, genre, year, duration} = req.body;
     let imageURL = ""
     // Subir la imagen a Cloudinary utilizando la API
@@ -27,12 +27,12 @@ moviesController.postEmployees = async (req, res) => {
     res.json({ message: "Pelicula guardada" });
 };
 // READ (GET)
-moviesController.getEmployees = async (req, res) => {
+moviesController.getMovies = async (req, res) => {
   const movies = await moviesModel.find();
   res.json(movies);
 };
 // UPDATE (PUT)
-moviesController.putEmployees = async (req, res) => {
+moviesController.putMovies = async (req, res) => {
   const {title, description, filmDirector, genre, year, duration} = req.body;
   let imageURL = ""
   // Subir la imagen a Cloudinary utilizando la API
@@ -47,12 +47,12 @@ moviesController.putEmployees = async (req, res) => {
   res.json({ message: "Pelicula actualizada" });
 };
 // DELETE (DELETE)
-moviesController.deleteEmployees = async (req, res) => {
+moviesController.deleteMovies = async (req, res) => {
   const deletedMovie = await moviesModel.findByIdAndDelete(req.params.id);
   res.json({ message: "Pelicula eliminada" });
 };
 // READ 1 Empleado BY ID
-moviesController.getEmployee = async (req, res) => {
+moviesController.getMovie = async (req, res) => {
   const movie = await moviesModel.findById(req.params.id);
   res.json(movie);
 };
