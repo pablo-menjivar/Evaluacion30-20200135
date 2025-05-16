@@ -21,7 +21,7 @@ const employeesSchema = new Schema(
         email: { type: String, required: true, unique: true },
         address: { type: String, required: true },
         hireDate: { type: Date, required: true },
-        workingPlace: { type: String, required: true },
+        role: { type: String, required: true, enum: ['vendedor', 'gerente'] },
         password: { type: String, required: true, unique: true },
         phoneNumber: { type: String, required: true },
         DUI: { type: String, required: true },
