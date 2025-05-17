@@ -18,7 +18,7 @@ const moviesSchema = new Schema(
         title: { type: String, required: true },
         description: { type: String, required: true },
         filmDirector: { type: String, required: true },
-        genre: { type: String, required: true },
+        genre: { type: String, required: true, num: ['accion', 'dramas', 'comedia', 'romance', 'terror', 'suspenso'] },
         year: { type: Number, required: true, max: 2025 },
         duration: { type: Number, required: true },
         image: { type: String, required: false },

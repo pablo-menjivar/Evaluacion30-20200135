@@ -4,8 +4,8 @@ const customersController = {};
 import customersModel from "../models/Customers.js";
 // CREATE (POST)
 customersController.postCustomers = async (req, res) => {
-  const {name, email, address, password, phoneNumber, DUI} = req.body;
-  const newCustomer = new customersModel({name, email, address, password, phoneNumber, DUI});
+  const {name, email, address, password, phoneNumber, DUI, isVerified} = req.body;
+  const newCustomer = new customersModel({name, email, address, password, phoneNumber, DUI, isVerified});
 
   await newCustomer.save();
   res.json({ message: "Cliente guardado" });
@@ -17,8 +17,8 @@ customersController.getCustomers = async (req, res) => {
 };
 // UPDATE (PUT)
 customersController.putCustomers = async (req, res) => {
-  const {name, email, address, password, phoneNumber, DUI} = req.body;
-  const updatedCustomer = await customersModel.findByIdAndUpdate(req.params.id, {name, email, address, password, phoneNumber, DUI}, { new: true });
+  const {name, email, address, password, phoneNumber, DUI, isVerified} = req.body;
+  const updatedCustomer = await customersModel.findByIdAndUpdate(req.params.id, {name, email, address, password, phoneNumber, DUI, isVerified}, { new: true });
   res.json({ message: "Cliente actualizado" });
 };
 // DELETE (DELETE)

@@ -7,6 +7,7 @@
       "contraseña"
       "telefono"
       "DUI"
+      "estaVerificado"
     }
 ] */
 // Importamos Schema y model de mongoose
@@ -19,7 +20,8 @@ const customersSchema = new Schema(
         address: { type: String, required: true },
         password: { type: String, required: true, unique: true },
         phoneNumber: { type: String, required: true },
-        DUI: { type: String, required: false },
+        DUI: { type: String, required: true },
+        isVerified: { type: Boolean, required: true }
     },
     {
         timestamps: true,

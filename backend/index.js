@@ -11,5 +11,4 @@ async function main() {
   // Muestro un mensaje en la consola para saber que el servidor está corriendo
   console.log("Servidor en ejecución")
 }
-// Ejecuto la función main
 main()

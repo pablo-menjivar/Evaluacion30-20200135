@@ -4,15 +4,17 @@ const moviesController = {};
 import moviesModel from "../models/Movies.js";
 // Importo la libreria de `Cloudinary` para guardar las imagenes
 import { v2 as cloudinary } from 'cloudinary';
-// Configuro Cloudinary con las credenciales en el .env
+// Importo el archivo 'config'
+import { config } from "../utils/config.js"
+// Configuro los parametros con los valores del .env
 cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET
+    cloud_name: config.CLOUDINARY.CLOUD_NAME,
+    api_key: config.CLOUDINARY.API_KEY,
+    api_secret: config.CLOUDINARY.API_SECRET
 })
 // CREATE (POST)
 moviesController.postMovies = async (req, res) => {
-    const {title, description, filmDirector, genre, year, duration} = req.body;
+    const { title, description, filmDirector, genre, year, duration } = req.body;
     let imageURL = ""
     // Subir la imagen a Cloudinary utilizando la API
     if (req.file) {
@@ -22,7 +24,7 @@ moviesController.postMovies = async (req, res) => {
         })
         imageURL = result.secure_url
     }
-    const newMovie = new moviesModel({title, description, filmDirector, genre, year, duration, image: imageURL});
+    const newMovie = new moviesModel({ title, description, filmDirector, genre, year, duration, image: imageURL });
     await newMovie.save();
     res.json({ message: "Pelicula guardada" });
 };
