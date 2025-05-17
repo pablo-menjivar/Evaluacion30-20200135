@@ -53,7 +53,7 @@ signupCustomerController.registerCustomer = async (req, res) => {
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 console.log("error", error)
-                return res.json({message: "Error al enviar el correo electrónico", error: error.message})
+                return res.json({message: "Error al enviar el correo electrónico ", error: error.message})
             }
             console.log("Correo electrónico enviado", info.response)
             res.json({message: "Código de verificación enviado"});
@@ -61,7 +61,7 @@ signupCustomerController.registerCustomer = async (req, res) => {
         res.json({message: "Cliente registrado, por favor verifica tu correo"})
     } catch (error) {
         console.log("error", error)
-        res.json({message: "Error al registrar el empleado", error: error.message})
+        res.json({message: "Error al registrar el empleado ", error: error.message})
     }
 }
 //Verificar el código de verificación

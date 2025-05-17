@@ -34,7 +34,7 @@ signupController.registerEmployee = async (req, res) => {
         res.json({message: "Empleado registrado"})
     } catch (error) {
         console.log("error", error)
-        res.json({message: "Error al registrar el empleado", error: error.message})
+        res.json({message: "Error al registrar el empleado ", error: error.message})
     }
 }
 export default signupController

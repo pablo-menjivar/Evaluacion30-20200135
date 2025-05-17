@@ -4,7 +4,6 @@ const moviesController = {};
 import moviesModel from "../models/Movies.js";
 // Importo la libreria de `Cloudinary` para guardar las imagenes
 import { v2 as cloudinary } from 'cloudinary';
-// Importo el archivo 'config'
 import { config } from "../utils/config.js"
 // Configuro los parametros con los valores del .env
 cloudinary.config({
